@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+
+<head>
+    <title>House Price Prediction</title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+		Price:
+		<input type="text" name="age" placeholder="Price" required="required" /><br>
+		<br>LivingMeasure:
+    	<input type="text" name="sex" placeholder="LivingMeasure" required="required" /><br>
+		<br>Quality:
+        <input type="text" name="bmi" placeholder="Quality" required="required" /><br>
+		<br>CeilMeasure:
+        <input type="text" name="children" placeholder="CeilMeasure" required="required" /><br>
+		<br>LivingMeasure15:
+        <input type="text" name="smoker" placeholder="LivingMeasure15" required="required" /><br>
+		<br>RoomBath:
+        <input type="text" name="region" placeholder="RoomBath" required="required" /><br>
+		<br>Sight:
+		<input type="text" name="region" placeholder="Sight" required="required" /><br>
+		<br>Basement:
+		<input type="text" name="region" placeholder="Basement" required="required" /><br>
+		<br>RoomBed:
+		<input type="text" name="region" placeholder="RoomBed" required="required" /><br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+    	{% for variable, value in original_input.items() %}
+    		<b>{{ variable }}</b> : {{ value }}
+    	{% endfor %}
+		<br>
+    	<br> Predicted number of bikes in use:
+   		<p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+
+</html>
